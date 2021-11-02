@@ -13,11 +13,16 @@ while current_position < 100:
     if option == NO_PLAY:
         pass
     elif option == LADDER:
-        current_position += number_on_die
+        if current_position + number_on_die > 100:
+            pass
+        else:
+            current_position += number_on_die
     else:
         current_position -= number_on_die
         if current_position < 0:
             current_position = 0
-    print(f"current position {current_position}")
+    if current_position == 100:
+        break
 
+print("Player wins")
 print(f"position at end {current_position}")
