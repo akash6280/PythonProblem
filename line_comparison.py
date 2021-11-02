@@ -2,6 +2,7 @@ import math
 
 
 def calculate_distance(point1, point2):
+    """ method to calculate distance between two points"""
     return math.sqrt(((int(point1[0]) - int(point2[0])) ** 2) + ((int(point1[1]) - int(point2[1])) ** 2))
 
 
