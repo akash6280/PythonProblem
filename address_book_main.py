@@ -19,6 +19,22 @@ def delete_contact(contact_to_delete):
             address_book.remove(contact)
 
 
+def search_person_by_state(state):
+    """ method to search person by state in address book"""
+    for i in range(len(address_book)):
+        contact = address_book[i]
+        if contact.state == state:
+            print(contact)
+
+
+def search_person_by_city(city):
+    """ method to search person by city in address book"""
+    for i in range(len(address_book)):
+        contact = address_book[i]
+        if contact.city == city:
+            print(contact)
+
+
 def print_address_book():
     """ method to print address book list"""
     for i in range(len(address_book)):
@@ -39,3 +55,12 @@ print_address_book()
 contact_to_delete = "akash"
 delete_contact(contact_to_delete)
 print_address_book()
+
+address_book.append(contact_person)
+contact_person = Contact("agam", "singh", "cantt", "varanasi", "uttar pradesh", "221002", "9740142826",
+                         "agam@gmail.com")
+address_book.append(contact_person)
+
+search_person_by_state("uttar pradesh")
+
+search_person_by_city("bangalore")
