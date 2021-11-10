@@ -43,7 +43,7 @@ class UserRegistration():
 
     @staticmethod
     def validate_password(password_to_be_validated):
-        pattern = ".{8,}$"
+        pattern = "(?=.*[A-Z]).{8,}$"
         result = re.match(pattern, password_to_be_validated)
         if result:
             print("password is valid")
