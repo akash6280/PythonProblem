@@ -1,5 +1,6 @@
 class Contact:
-    """ class that represent person detailstouch touch"""
+    """ class that represent person details """
+
     def __init__(self, first_name, last_name, address, city, state, zip_code, phone, email):
         self.first_name = first_name
         self.last_name = last_name
@@ -14,3 +15,16 @@ class Contact:
         return "first_name: " + self.first_name + "\nlast_name: " + self.last_name + "\naddress: " + self.address \
                + "\ncity: " + self.city + "\nstate: " + self.state + "\nzip_code: " + self.zip_code + "\nphone: " \
                + self.phone + "\nemail: " + self.email
+
+    def json_object(self):
+        """ method that return json object"""
+        return {
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "address": self.address,
+            "city": self.city,
+            "state": self.state,
+            "zip_code": self.zip_code,
+            "phone": self.phone,
+            "email": self.email
+        }
