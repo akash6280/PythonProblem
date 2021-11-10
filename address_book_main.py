@@ -60,6 +60,21 @@ class AddressBook:
             for contact in value:
                 print(contact)
 
+    def map_state_with_person(self):
+        """ method to map person with state """
+        state_map = {}
+        for i in range(len(self.address_book)):
+            contact = self.address_book[i]
+            if contact.state not in state_map.keys():
+                state_map[contact.state] = [contact]
+            else:
+                state_map[contact.state].append(contact)
+
+        for key, value in state_map.items():
+            print("State: {}".format(key))
+            for contact in value:
+                print(contact)
+
     def write_data_to_json_file(self):
         """ method to write data to json file"""
         address_books = []
