@@ -32,6 +32,15 @@ class UserRegistration():
         else:
             print("email is not valid")
 
+    @staticmethod
+    def validate_phone(phone_to_be_validated):
+        pattern = "^[0-9]{2}[ ][1-9][0-9]{9}$"
+        result = re.match(pattern, phone_to_be_validated)
+        if result:
+            print("phone number is valid")
+        else:
+            print("phone number is not valid")
+
 
 if __name__ == "__main__":
     first_name = input("enter first name to be checked ")
@@ -42,5 +51,8 @@ if __name__ == "__main__":
 
     email_id = input("enter email to be checked ")
     UserRegistration.validate_email(email_id)
+
+    phone_number = input("enter phone to be checked ")
+    UserRegistration.validate_phone(phone_number)
 
 
