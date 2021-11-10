@@ -45,6 +45,21 @@ class AddressBook:
             if contact.city == city:
                 print(contact)
 
+    def map_city_with_person(self):
+        """ method to map person with city """
+        city_map = {}
+        for i in range(len(self.address_book)):
+            contact = self.address_book[i]
+            if contact.city not in city_map.keys():
+                city_map[contact.city] = [contact]
+            else:
+                city_map[contact.city].append(contact)
+
+        for key, value in city_map.items():
+            print("City: {}".format(key))
+            for contact in value:
+                print(contact)
+
     def write_data_to_json_file(self):
         """ method to write data to json file"""
         address_books = []
