@@ -41,6 +41,15 @@ class UserRegistration():
         else:
             print("phone number is not valid")
 
+    @staticmethod
+    def validate_password(password_to_be_validated):
+        pattern = ".{8,}$"
+        result = re.match(pattern, password_to_be_validated)
+        if result:
+            print("password is valid")
+        else:
+            print("password is not valid")
+
 
 if __name__ == "__main__":
     first_name = input("enter first name to be checked ")
@@ -54,5 +63,8 @@ if __name__ == "__main__":
 
     phone_number = input("enter phone to be checked ")
     UserRegistration.validate_phone(phone_number)
+
+    password = input("enter password to be checked ")
+    UserRegistration.validate_password(password)
 
 
