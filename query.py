@@ -28,6 +28,10 @@ sum_salary_query = """select sum(salary) from employee_payroll where gender='M' 
 
 count_salary_query = """select count(gender) from employee_payroll where gender='M' group by gender;"""
 
+drop_table_employee_payroll = """DROP TABLE employee_payroll;"""
+
+delete_row_id_1 = """delete from employee_payroll where id=1"""
+
 # select avg(salary) from employee_payroll where gender='F' group by gender;
 #
 # select max(salary) from employee_payroll where gender='F' group by gender;
@@ -36,3 +40,21 @@ count_salary_query = """select count(gender) from employee_payroll where gender=
 #
 # select count(gender) from employee_payroll where gender='F' group by gender;
 # select sum(salary) from employee_payroll where gender='F' group by gender;
+
+create_books_table_query = """
+    CREATE TABLE  books (
+        id INT,
+        author VARCHAR(100),
+        title VARCHAR(100),
+        image VARCHAR(100),
+        quantity INT,
+        price INT,
+        description TEXT
+    )
+"""
+
+inner_join_query = """
+select author, salary   
+from employee_payroll,books
+where employee_payroll.id = books.id 
+"""
