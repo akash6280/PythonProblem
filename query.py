@@ -43,7 +43,7 @@ delete_row_id_1 = """delete from employee_payroll where id=1"""
 
 create_books_table_query = """
     CREATE TABLE  books (
-        id INT,
+        id INT   AUTO_INCREMENT,
         author VARCHAR(100),
         title VARCHAR(100),
         image VARCHAR(100),
