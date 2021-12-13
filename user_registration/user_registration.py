@@ -16,9 +16,11 @@ class UserRegistration:
             elif name_to_be_validated is "":
                 raise UserRegistrationException("Empty String")
             elif re.match(pattern, name_to_be_validated):
+                return True
                 print("first name is valid")
             else:
                 print("first name is not valid")
+                return False
         except UserRegistrationException as e:
             print(e)
 
@@ -39,16 +41,18 @@ class UserRegistration:
 
     @staticmethod
     def validate_email(email_to_be_validated):
-        pattern = "^[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]([+-_.][a-zA-Z]*)?@[a-zA-Z0-9]*[.][a-z]{2,4}([.][a-zA-z]{2})?$"
+        pattern = "^[a-zA-z]+[a-zA-Z0-9]*[- . + _]?[a-zA-Z0-9]+[@]{1}[a-z0-9]+[.]{1}[a-z]+[.]?[a-z]+$"
         try:
             if email_to_be_validated is None:
                 raise UserRegistrationException("None String entered")
             elif email_to_be_validated is "":
                 raise UserRegistrationException("Empty String")
             elif re.match(pattern, email_to_be_validated):
+                return True
                 print("email is valid")
             else:
                 print("email is not valid")
+                return False
         except UserRegistrationException as e:
             print(e)
 
@@ -62,8 +66,10 @@ class UserRegistration:
                 raise UserRegistrationException("Empty String")
             elif re.match(pattern, phone_to_be_validated):
                 print("phone is valid")
+                return True
             else:
                 print("phone is not valid")
+                return False
         except UserRegistrationException as e:
             print(e)
 
@@ -77,8 +83,10 @@ class UserRegistration:
                 raise UserRegistrationException("Empty String")
             elif re.match(pattern, password_to_be_validated):
                 print("password is valid")
+                return True
             else:
                 print("password is not valid")
+                return False
         except UserRegistrationException as e:
             print(e)
 
