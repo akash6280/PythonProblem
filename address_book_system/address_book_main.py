@@ -21,7 +21,9 @@ class AddressBook:
             contact = self.address_book[i]
             if contact.phone == new_detail:
                 self.address_book[i] = updated_contact
-        self.write_data_to_json_file()
+                self.write_data_to_json_file()
+                return contact
+        return None
 
     def delete_contact(self, contact_to_delete):
         """ method to delete contact using first name"""
@@ -33,17 +35,29 @@ class AddressBook:
 
     def search_person_by_state(self, state):
         """ method to search person by state in address book"""
+        found = False
         for i in range(len(self.address_book)):
             contact = self.address_book[i]
             if contact.state == state:
+                found = True
                 print(contact)
+        if found:
+            return True
+        else:
+            return False
 
     def search_person_by_city(self, city):
         """ method to search person by city in address book"""
+        found = False
         for i in range(len(self.address_book)):
             contact = self.address_book[i]
             if contact.city == city:
+                found = True
                 print(contact)
+        if found:
+            return True
+        else:
+            return False
 
     def map_city_with_person(self):
         """ method to map person with city """
@@ -59,6 +73,7 @@ class AddressBook:
             print("City: {}".format(key))
             for contact in value:
                 print(contact)
+        return city_map
 
     def map_state_with_person(self):
         """ method to map person with state """
@@ -74,6 +89,7 @@ class AddressBook:
             print("State: {}".format(key))
             for contact in value:
                 print(contact)
+        return state_map
 
     def write_data_to_json_file(self):
         """ method to write data to json file"""
