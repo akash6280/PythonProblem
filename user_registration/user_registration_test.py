@@ -29,12 +29,12 @@ def test_first_name_with_incorrect_format():
 
 
 def test_last_name_with_proper_format():
-    assert user_registration.validate_first_name("Singh")
+    assert user_registration.validate_last_name("Singh")
 
 
 @pytest.mark.xfail
 def test_last_name_with_incorrect_format():
-    assert user_registration.validate_first_name("singh")
+    assert user_registration.validate_last_name("singh")
 
 
 def test_mobile_number_with_correct_pattern():
@@ -53,3 +53,33 @@ def test_password():
 @pytest.mark.xfail
 def test_password_wrong_input_pattern():
     assert user_registration.validate_password("Akash")
+
+
+@pytest.mark.xfail(raises=UserRegistrationException)
+def test_first_name_with_none_input():
+    assert user_registration.validate_first_name(None)
+
+
+@pytest.mark.xfail(raises=UserRegistrationException)
+def test_first_name_with_empty_input():
+    assert user_registration.validate_first_name("")
+
+
+@pytest.mark.xfail(raises=UserRegistrationException)
+def test_last_name_with_none_input():
+    assert user_registration.validate_last_name(None)
+
+
+@pytest.mark.xfail(raises=UserRegistrationException)
+def test_last_name_with_empty_input():
+    assert user_registration.validate_last_name("")
+
+
+@pytest.mark.xfail(raises=UserRegistrationException)
+def test_email_with_none_input():
+    assert user_registration.validate_email(None)
+
+
+@pytest.mark.xfail(raises=UserRegistrationException)
+def test_email_with_empty_input():
+    assert user_registration.validate_email("")
