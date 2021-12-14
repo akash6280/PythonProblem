@@ -13,24 +13,41 @@ class WebCrawlingPipeline:
         return item
 
 
-from mysql.connector import connect, Error
-import mysql
+import mysql.connector as mysql
 
 
 class MySQLStorePipeline(object):
-    host = 'localhost'
-    user = 'newuser'
-    password = 'password'
-    db = 'payroll_services'
 
+    # init method to initialize the database and
+    # create connection and tables
     def __init__(self):
-        self.connection = mysql.connect(self.host, self.user, self.password, self.db)
+        # Creating connection to database
+        self.create_connection()
+
+        # calling method to create table
+        self.create_table()
+
+    # create connection method to create database
+    # or use database to store scraped data
+    def create_connection(self):
+        # connecting to database.
+        self.connection = mysql.connect(host="localhost", user="root", password="Welcome@123",
+                                        database="shopclues")
+
+        # collecting reference to cursor of connection
         self.cursor = self.connection.cursor()
 
+    # Create table method using SQL commands to create table
+    def create_table(self):
+        self.cursor.execute("""DROP TABLE IF EXISTS Mobiles""")
+        self.cursor.execute("""create table Mobiles(title text ,price text ,image text, discount text)""")
+
+    # store items to databases.
     def process_item(self, item, spider):
-        self.cursor.execute("""INSERT INTO payroll_services.Mobile (title) 
-                        VALUES (%s)""", (item['title']))
-        print("hello")
-        print(item)
-        self.connection.commit()
+        self.put_items_in_table(item)
         return item
+
+    def put_items_in_table(self, item):
+        # extracting item and adding to table using SQL commands.
+        self.cursor.execute("""insert into Mobiles values (%s,%s,%s,%s)""", (item['title'],item['price'],item['image'],item['discount']))
+        self.connection.commit()

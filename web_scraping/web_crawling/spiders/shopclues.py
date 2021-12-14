@@ -13,8 +13,9 @@ class ShopcluesSpider(scrapy.Spider):
     start_urls = ['https://www.shopclues.com/mobiles-smartphones.html?facet_brand[]=Redmi&fsrc=facet_brand']
 
     def parse(self, response):
+        # creating items dictionary
+        items = MobileItem()
         # Extract product information
-        response.selector.remove_namespaces()
         titles = response.css('img::attr(title)').extract()
         images = response.css('img::attr(data-img)').extract()
         prices = response.css('.p_price::text').extract()
@@ -28,4 +29,3 @@ class ShopcluesSpider(scrapy.Spider):
                 discount=items[3]
             )
             yield item
-

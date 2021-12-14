@@ -14,6 +14,9 @@ BOT_NAME = 'web_crawling'
 
 SPIDER_MODULES = ['web_crawling.spiders']
 NEWSPIDER_MODULE = 'web_crawling.spiders'
+ITEM_PIPELINES = {
+   'web_crawling.pipelines.MySQLStorePipeline': 300,
+}
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 #
